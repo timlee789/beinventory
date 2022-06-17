@@ -1,5 +1,5 @@
 const express = require('express')
-
+const dotenv = require('dotenv')
 const cors = require('cors')
 const { MongoClient } = require("mongodb");
 const { query } = require('express');
@@ -7,7 +7,7 @@ const { query } = require('express');
 dotenv.config()
 
 const app = express();
-const client = new MongoClient('mongodb+srv://timlee:Leetim123@clustertim.koved.mongodb.net/Landing?retryWrites=true&w=majority');
+const client = new MongoClient(process.env.MONGODB_URI);
 client.connect().then(() => console.log("connected to db"));
 
 app.use(cors());
