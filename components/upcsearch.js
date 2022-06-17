@@ -17,7 +17,7 @@ export default function Upcsearch() {
 			//return false
 		}
 		;(async () => {
-			const url = 'https://astonishing-cendol-bf6827.netlify.app/.netlify/functions/mongosearch/upcmultisearch'
+			const url = 'http://192.168.1.83:8000/upcmultisearch'
 
 			const { data } = await axios.get(url, {
 				params: {
