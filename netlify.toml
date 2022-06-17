@@ -1,6 +1,6 @@
 [build]
     base = "/"
-    publish = "pages/"
+    publish = ".next/"
     command = "npm run build"
     functions = "my_functions/"
 [[redirects]]
