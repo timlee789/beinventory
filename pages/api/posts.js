@@ -23,7 +23,7 @@ export default async function handler(req, res) {
             let { db } = await connectToDb();
             // fetch the posts
             let posts = await db
-                .collection('inventory2')
+                .collection('inventory')
                 .find({})
                 .sort({ published: -1 })
                 .toArray();
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
             // connect to the database
             let { db } = await connectToDb();
             // add the post
-            await db.collection('inventory2').insertOne(req.body);
+            await db.collection('inventory').insertOne(req.body);
             // return a message
             return res.json({
                 message: 'Post added successfully',
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
             let { db } = await connectToDb();
     
             // Deleting the post
-            await db.collection('inventory2').deleteOne({
+            await db.collection('inventory').deleteOne({
                 _id: new ObjectId(req.body),
             });
     
@@ -94,7 +94,7 @@ export default async function handler(req, res) {
             let { db } = await connectToDb();
 
             // update the published status of the post
-            await db.collection('inventory2').updateOne(
+            await db.collection('inventory').updateOne(
                 {
                     _id: (req.body).id,
                 },
