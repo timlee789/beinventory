@@ -1,6 +1,6 @@
 [build]
     base = "/"
-    publish = "beinventory/"
+    publish = "/"
     command = "npm run build"
     functions = "my_functions/"
 [[redirects]]
