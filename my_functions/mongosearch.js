@@ -1,5 +1,5 @@
 const express = require('express')
-const dotenv = require('dotenv')
+
 const cors = require('cors')
 const { MongoClient } = require("mongodb");
 const { query } = require('express');
