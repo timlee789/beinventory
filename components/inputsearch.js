@@ -17,7 +17,7 @@ export default function Upcsearch() {
 			//return false
 		}
 		;(async () => {
-			const url = 'http://192.168.1.83:8000/upcsearchone'
+			const url = 'http://192.168.1.101:8000/upcsearchone'
 
 			const { data } = await axios.get(url, {
 				params: {

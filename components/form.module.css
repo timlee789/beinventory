@@ -10,7 +10,7 @@
 .form {
     width: 400px;
     height: 60px;
-    margin: 1PX 30px 10px 40PX;
+    margin: 1PX 35px 10px 35PX;
     border-radius: 15px;
     border-color: rgb(203, 205, 206);
     background-color: blanchedalmond;
@@ -46,7 +46,12 @@
     color:#fff;
     padding: 10px 40px;
     margin: 20px 150px;
-    font-size: 18px;
+    font-size: 25px;
+}
+.result {
+    font-size: 30px;
+    text-align: center;
+    color: blue;
 }
 .pagetitle{
     text-align: center;

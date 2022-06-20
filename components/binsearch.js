@@ -16,7 +16,7 @@ export default function Binearch() {
 			//return false
 		}
 		;(async () => {
-			const url = 'http://192.168.1.83:8000/binsearch'
+			const url = 'http://192.168.1.101:8000/binsearch'
 
 			const { data } = await axios.get(url, {
 				params: {

@@ -16,7 +16,7 @@ export default function Deductsearch() {
 			//return false
 		}
 		;(async () => {
-			const url = 'http://192.168.1.83:8000/upcmultisearch'
+			const url = 'http://192.168.1.101:8000/upcmultisearch'
 
 			const { data } = await axios.get(url, {
 				params: {

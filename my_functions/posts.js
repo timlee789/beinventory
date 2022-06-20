@@ -17,13 +17,63 @@ export default async function handler(req, res) {
             return deletePost(req, res);
         }
     }
+   
+    async function addPost(req, res) {
+        try {
+            // connect to the database
+            let { db } = await connectToDb();
+            // add the post
+            await db.collection('inventory2').insertOne(req.body);
+            // return a message
+            return res.json({
+                message: 'Post added successfully',
+                success: true,
+            });
+        } catch (error) {
+            // return an error
+            return res.json({
+                message: new Error(error).message,
+                success: false,
+            });
+        }
+    }
+    
+    async function updatePost(req, res) {
+       
+        try {
+            // connect to the database
+            let { db } = await connectToDb();
+
+            // update the published status of the post
+            await db.collection('inventory2').updateOne(
+                {
+                    _id: (req.body).id,
+                },
+                { $set:req.body }
+            );
+    
+            // return a message
+            return res.json({
+                message: 'Post updated successfully',
+                success: true,
+            });
+        } catch (error) {
+    
+            // return an error
+            return res.json({
+                message: new Error(error).message,
+                success: false,
+            });
+        }
+    }
+     
     async function getPost(req,res){
         try {
             // connect to the database
             let { db } = await connectToDb();
             // fetch the posts
             let posts = await db
-                .collection('inventory')
+                .collection('inventory2')
                 .find({})
                 .sort({ published: -1 })
                 .toArray();
@@ -41,27 +91,6 @@ export default async function handler(req, res) {
             });
         }
     }
-    
-    async function addPost(req, res) {
-        try {
-            // connect to the database
-            let { db } = await connectToDb();
-            // add the post
-            await db.collection('inventory').insertOne(req.body);
-            // return a message
-            return res.json({
-                message: 'Post added successfully',
-                success: true,
-            });
-        } catch (error) {
-            // return an error
-            return res.json({
-                message: new Error(error).message,
-                success: false,
-            });
-        }
-    }
-    
     async function deletePost(req, res) {
         try {
             // Connecting to the database
@@ -80,35 +109,6 @@ export default async function handler(req, res) {
         } catch (error) {
     
             // returning an error
-            return res.json({
-                message: new Error(error).message,
-                success: false,
-            });
-        }
-    }
-    
-    async function updatePost(req, res) {
-       
-        try {
-            // connect to the database
-            let { db } = await connectToDb();
-
-            // update the published status of the post
-            await db.collection('inventory').updateOne(
-                {
-                    _id: (req.body).id,
-                },
-                { $set:req.body }
-            );
-    
-            // return a message
-            return res.json({
-                message: 'Post updated successfully',
-                success: true,
-            });
-        } catch (error) {
-    
-            // return an error
             return res.json({
                 message: new Error(error).message,
                 success: false,

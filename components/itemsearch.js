@@ -15,7 +15,7 @@ export default function Search() {
 			//return false
 		}
 		;(async () => {
-			const url = 'http://192.168.1.83:8000/itemsearch'
+			const url = 'http://192.168.1.101:8000/itemsearch'
 
 			const { data } = await axios.get(url, {
 				params: {
