@@ -15,7 +15,7 @@ export default function Search() {
 			//return false
 		}
 		;(async () => {
-			const url = 'http://192.168.1.101:8000/itemsearch'
+			const url = 'http://192.168.1.101:3000/api_itemsearch'
 
 			const { data } = await axios.get(url, {
 				params: {
@@ -30,7 +30,7 @@ export default function Search() {
 		setQueryText('')
 	}
         return (
-                <div>
+                <div className={cla.formbody}>
                         <input
                         type='text'
                         placeholder='Item_Code'

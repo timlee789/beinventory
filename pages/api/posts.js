@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         case 'PUT': {
             return updatePost(req, res);
         }
-        case 'DELET': {
+        case 'DELETE': {
             return deletePost(req, res);
         }
     }
@@ -100,7 +100,7 @@ export default async function handler(req, res) {
             let { db } = await connectToDb();
     
             // Deleting the post
-            await db.collection('inventory2').deleteOne({
+            await db.collection('inventory').deleteOne({
                 _id: new ObjectId(req.body),
             });
     

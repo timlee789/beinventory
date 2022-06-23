@@ -41,7 +41,7 @@ export default function Upcsearch() {
                         placeholder='UPC_Code'
                         value={queryText}
                         onChange={handleChange}
-                        className={cla.form}
+                        className={cla.form2}
 						autoFocus={true}
                         />
 						<button onClick={resetInputField} className={cla.resetBtn}>Reset</button>

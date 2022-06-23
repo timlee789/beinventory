@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useRef } from'react'
 
 const bull = (
   <Box
@@ -16,6 +17,25 @@ const bull = (
 );
 
 export default function SearchResult({searchResults}) {
+    const refId = useRef();
+    async function deleteHanler(){
+      event.preventDefault();
+      const enteredId = refId.current.value;
+      const InputData = {
+        _id: enteredId,
+      }
+      const res = await fetch('/api/posts',
+      {
+        method: 'DELET',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(InputData) 
+      }
+      )
+     // const data2 = await res.json()
+    }
+ 
   return (
         <div>
         {searchResults.map(data => (
@@ -37,6 +57,11 @@ export default function SearchResult({searchResults}) {
         <Typography variant="h5">
        Qty: {data.pcs_qty}
         </Typography>
+        {/* <form onClick={deleteHanler}>
+        <input type='hidden' defaultValue={data.id} ref={refId}></input>
+        <Button >DELETE</Button>
+        </form> */}
+        
       </CardContent> 
     </Card>
     </div>

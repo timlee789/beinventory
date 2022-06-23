@@ -10,8 +10,7 @@ function Deductitem(props) {
   const { register, handleSubmit } = useForm();
   const [inputdata, setInputdata] = useState()
 
-  async function onSubmit(data){
-   
+  async function onSubmit(data){ 
     const res = await fetch('/api/posts',
       {
         method: 'PUT',
@@ -23,13 +22,27 @@ function Deductitem(props) {
           pcs_qty: props.pcs_qty - data.pcs_qty,
         })   
       }
-    )
-    
+    ) 
     const data2 = await res.json()
     setInputdata(data.pcs_qty)
-    
   }
-
+  async function deleteHanler(data) {
+    const del = await fetch('/api/posts',
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: data.id,
+         
+        })   
+      }
+    ) 
+    console.log(data.id)
+    const data2 = await del.json()
+    setInputdata("DATA DELETED")
+  }
  
   return (
     <div>
@@ -57,7 +70,11 @@ function Deductitem(props) {
     <div className={cla.result}>{inputdata}</div>
     <input type='hidden' {...register ('id')} defaultValue={props.id} ></input><br/>
     <input type='submit'   className={cla.btn} ></input>
-   
+    </form>
+    <form onClick={handleSubmit(deleteHanler)}>
+      <input type='hidden' {...register ('id')} defaultValue={props.id} ></input><br/>
+  
+      <button className={cla.deletBtn}>DELETE</button>
     </form>
     </Card>
     </section>
